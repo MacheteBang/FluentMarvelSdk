@@ -19,6 +19,7 @@ public partial class MarvelApiService
             .SetQueryParam("hash", GetHash());
 
         var response = comicsUrl
+            .AllowAnyHttpStatus()
             .GetAsync()
             .Result
             .ThrowOnError();
