@@ -1,6 +1,5 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
+using Flurl.Http;
 
 namespace mmmPizza.MarvelSdk;
 
@@ -10,7 +9,6 @@ public partial class MarvelApiService
     private readonly JsonSerializerOptions _jsonOptions = default!;
     private readonly string _privateApiKey = default!;
     private readonly string _publicApiKey = default!;
-    private long _currentTimeStamp;
 
 
     // Constructors
@@ -32,24 +30,23 @@ public partial class MarvelApiService
 
 
     // Private Methods
-    private void SetTimeStamp()
+    private async Task<DataContainer<T>?> GetResourceAsync<T>(Flurl.Url url)
     {
-        _currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
-    }
-    private long GetTimeStamp()
-    {
-        if (_currentTimeStamp == default) SetTimeStamp();
-        return _currentTimeStamp;
-    }
-    private string GetHash()
-    {
-        byte[] hashBytes;
-        using (MD5 md5 = MD5.Create())
-        {
-            hashBytes = md5
-                .ComputeHash(Encoding.UTF8.GetBytes($"{_currentTimeStamp}{_privateApiKey}{_publicApiKey}"));
-        }
+        url.AppendAuthorization(_privateApiKey, _publicApiKey);
 
-        return BitConverter.ToString(hashBytes).Replace("-", string.Empty).ToLower();
+        var response = url
+            .AllowAnyHttpStatus()
+            .GetAsync()
+            .Result
+            .ThrowOnError();
+
+        if (response.StatusCode != 200) throw new Exception();
+
+        string json = await response.GetStringAsync();
+        json = json.Replace("-0001-11-30T00:00:00-0500", "1900-01-01T00:00:00-00:00");
+
+        DataWrapper<T> wrapper = JsonSerializer.Deserialize<DataWrapper<T>>(json, _jsonOptions);
+
+        return wrapper?.Data;
     }
 }
