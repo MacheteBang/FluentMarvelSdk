@@ -1,18 +1,15 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using Flurl;
-using Flurl.Http;
 
 namespace mmmPizza.MarvelSdk;
 
-public class MarvelApiService
+public partial class MarvelApiService
 {
     // Private Properties
     private readonly JsonSerializerOptions _jsonOptions = default!;
     private readonly string _privateApiKey = default!;
     private readonly string _publicApiKey = default!;
-
     private long _currentTimeStamp;
 
 
@@ -34,35 +31,7 @@ public class MarvelApiService
     }
 
 
-    public async Task<DataWrapper<Comic>> GetComics()
-    {
-        SetTimeStamp();
-
-        Flurl.Url comicsUrl = ResourceRoutes
-            .BaseUrl
-            .AppendPathSegment(ResourceRoutes.Comics)
-            .SetQueryParam("ts", _currentTimeStamp)
-            .SetQueryParam("apikey", _publicApiKey)
-            .SetQueryParam("hash", GetHash());
-
-        var response = comicsUrl
-            .GetAsync()
-            .Result
-            .ThrowOnError();
-
-        if (response.StatusCode != 200) throw new Exception();
-
-        string json = await response.GetStringAsync();
-        json = json.Replace("-0001-11-30T00:00:00-0500", "1900-01-01T00:00:00-00:00");
-
-        DataWrapper<Comic> comics = JsonSerializer.Deserialize<DataWrapper<Comic>>(json, _jsonOptions);
-
-        return comics;
-    }
-
-
-
-
+    // Private Methods
     private void SetTimeStamp()
     {
         _currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
