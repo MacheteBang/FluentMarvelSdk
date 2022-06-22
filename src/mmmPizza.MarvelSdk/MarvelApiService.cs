@@ -44,7 +44,7 @@ public class MarvelApiService
         string json = await response.GetStringAsync();
         json = json.Replace("-0001-11-30T00:00:00-0500", "1900-01-01T00:00:00-00:00");
 
-        DataWrapper<T> wrapper = JsonSerializer.Deserialize<DataWrapper<T>>(json, _jsonOptions);
+        DataWrapper<T>? wrapper = JsonSerializer.Deserialize<DataWrapper<T>>(json, _jsonOptions);
 
         return wrapper?.Data;
     }
