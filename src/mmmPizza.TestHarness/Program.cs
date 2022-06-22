@@ -12,7 +12,7 @@ AnsiConsole.MarkupLine("Creating instance...");
 var api = new MarvelApiService(_configuration["Marvel:PrivateKey"], _configuration["Marvel:PublicKey"]);
 
 AnsiConsole.MarkupLine("Getting all comics...");
-var characters = await api.GetCharactersAsync(new CharacterOptions
+var characters = await api.GetCharactersAsync(new CharacterOptionSet
 {
     NameStartsWith = "Spider",
     Comics = new int[] { 123, 456 }

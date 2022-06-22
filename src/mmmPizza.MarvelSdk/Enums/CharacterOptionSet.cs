@@ -1,6 +1,6 @@
 namespace mmmPizza.MarvelSdk;
 
-public class CharacterOptions
+public class CharacterOptionSet
 {
     public string? Name { get; set; }
     public string? NameStartsWith { get; set; }
