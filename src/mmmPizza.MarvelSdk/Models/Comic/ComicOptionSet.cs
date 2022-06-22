@@ -1,6 +1,6 @@
 namespace mmmPizza.MarvelSdk;
 
-public class ComicOptionSet
+public class ComicOptionSet : OptionSet
 {
     public ComicFormats? Format { get; set; }
     public ComicFormatTypes? FormatType { get; set; }
@@ -18,7 +18,6 @@ public class ComicOptionSet
     public string? Ean { get; set; }
     public string? Issn { get; set; }
     public bool? HasDigitalIssue { get; set; }
-    public DateTimeOffset? ModifiedSince { get; set; }
     public int[]? Creators { get; set; }
     public int[]? Series { get; set; }
     public int[]? Events { get; set; }
@@ -26,6 +25,4 @@ public class ComicOptionSet
     public int[]? SharedAppearances { get; set; }
     public int[]? Collaborators { get; set; }
     public ComicOrderBy? OrderBy { get; set; }
-    public int? Limit { get; set; }
-    public int? Offset { get; set; }
 }
