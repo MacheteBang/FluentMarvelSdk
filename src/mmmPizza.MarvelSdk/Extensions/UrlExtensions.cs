@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -14,6 +15,31 @@ internal static class UrlExtensions
             .SetQueryParam("ts", timeStamp)
             .SetQueryParam("apikey", publicKey)
             .SetQueryParam("hash", hash);
+    }
+
+    internal static Flurl.Url SetQueryParams<T>(this Flurl.Url url, T options)
+    {
+        if (options is null) return url;
+
+        foreach (PropertyInfo p in options.GetType().GetProperties())
+        {
+            var propertyValue = p.GetValue(options);
+
+            if (propertyValue is null) continue;
+
+            if (p.PropertyType.IsArray)
+            {
+                string values = "";
+                foreach (var i in (Array)propertyValue) values += i.ToString() + ',';
+
+                url.SetQueryParam(p.Name.ToCamelCase(), values);
+                continue;
+            }
+
+            url.SetQueryParam(p.Name.ToCamelCase(), propertyValue);
+        }
+
+        return url;
     }
 
 

@@ -1,3 +1,4 @@
+using System.Reflection;
 using Flurl;
 using Flurl.Http;
 
@@ -11,6 +12,15 @@ public partial class MarvelApiService
         Flurl.Url url = ResourceRoutes
             .BaseUrl
             .AppendPathSegment(ResourceRoutes.Characters);
+
+        return await GetResourceAsync<Character>(url);
+    }
+    public async Task<DataContainer<Character>?> GetCharactersAsync(CharacterOptions options)
+    {
+        Flurl.Url url = ResourceRoutes
+            .BaseUrl
+            .AppendPathSegment(ResourceRoutes.Characters)
+            .SetQueryParams<CharacterOptions>(options);        
 
         return await GetResourceAsync<Character>(url);
     }
