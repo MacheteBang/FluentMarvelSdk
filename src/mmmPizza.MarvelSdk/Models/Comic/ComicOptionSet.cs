@@ -1,6 +1,6 @@
 namespace mmmPizza.MarvelSdk;
 
-public class ComicOptions
+public class ComicOptionSet
 {
     public ComicFormats? Format { get; set; }
     public ComicFormatTypes? FormatType { get; set; }

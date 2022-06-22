@@ -64,7 +64,7 @@ public class MarvelApiService
 
     public async Task<DataContainer<Comic>?> GetComicAsync(int comicId) => await GetResourceAsync<Comic>(ResourceRoutes.ComicsUrl.AppendPathSegment(comicId));
     public async Task<DataContainer<Comic>?> GetComicsAsync() => await GetResourceAsync<Comic>(ResourceRoutes.ComicsUrl);
-    public async Task<DataContainer<Comic>?> GetComicsAsync(ComicOptions options) => await GetResourceAsync<Comic>(ResourceRoutes.ComicsUrl.SetQueryParams<ComicOptions>(options));
+    public async Task<DataContainer<Comic>?> GetComicsAsync(ComicOptionSet options) => await GetResourceAsync<Comic>(ResourceRoutes.ComicsUrl.SetQueryParams<ComicOptionSet>(options));
     public async Task<DataContainer<Comic>?> GetComicsByCharacterAsync(int characterId) => await GetResourceAsync<Comic>(ResourceRoutes.CharactersUrl.AppendPathSegment(characterId).AppendPathSegment(ResourceRoutes.Comics));
     public async Task<DataContainer<Comic>?> GetComicsByCreatorAsync(int creatorId) => await GetResourceAsync<Comic>(ResourceRoutes.CreatorsUrl.AppendPathSegment(creatorId).AppendPathSegment(ResourceRoutes.Comics));
     public async Task<DataContainer<Comic>?> GetComicsByEventAsync(int eventId) => await GetResourceAsync<Comic>(ResourceRoutes.EventsUrl.AppendPathSegment(eventId).AppendPathSegment(ResourceRoutes.Comics));
