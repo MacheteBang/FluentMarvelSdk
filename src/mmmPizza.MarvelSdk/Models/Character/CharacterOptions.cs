@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace mmmPizza.MarvelSdk;
 
 public class CharacterOptions
