@@ -104,10 +104,15 @@ public class MarvelApiService
 
     public async Task<DataContainer<Series>?> GetSeriesAsync(int seriesId) => await GetResourceAsync<Series>(ResourceRoutes.SeriesUrl.AppendPathSegment(seriesId));
     public async Task<DataContainer<Series>?> GetSeriesAsync() => await GetResourceAsync<Series>(ResourceRoutes.SeriesUrl);
-    public async Task<DataContainer<Series>?> GetSeriesByCharacterAsync(int creatorId) => await GetResourceAsync<Series>(ResourceRoutes.CharactersUrl.AppendPathSegment(creatorId).AppendPathSegment(ResourceRoutes.Series));
+    public async Task<DataContainer<Series>?> GetSeriesAsync(SeriesOptionSet options) => await GetResourceAsync<Series>(ResourceRoutes.SeriesUrl.SetQueryParams<SeriesOptionSet>(options));
+    public async Task<DataContainer<Series>?> GetSeriesByCharacterAsync(int characterId) => await GetResourceAsync<Series>(ResourceRoutes.CharactersUrl.AppendPathSegment(characterId).AppendPathSegment(ResourceRoutes.Series));
+    public async Task<DataContainer<Series>?> GetSeriesByCharacterAsync(int characterId, SeriesOptionSet options) => await GetResourceAsync<Series>(ResourceRoutes.CharactersUrl.AppendPathSegment(characterId).AppendPathSegment(ResourceRoutes.Series).SetQueryParams<SeriesOptionSet>(options));
     public async Task<DataContainer<Series>?> GetSeriesByCreatorAsync(int creatorId) => await GetResourceAsync<Series>(ResourceRoutes.CreatorsUrl.AppendPathSegment(creatorId).AppendPathSegment(ResourceRoutes.Series));
+    public async Task<DataContainer<Series>?> GetSeriesByCreatorAsync(int creatorId, SeriesOptionSet options) => await GetResourceAsync<Series>(ResourceRoutes.CreatorsUrl.AppendPathSegment(creatorId).AppendPathSegment(ResourceRoutes.Series).SetQueryParams<SeriesOptionSet>(options));
     public async Task<DataContainer<Series>?> GetSeriesByEventAsync(int eventId) => await GetResourceAsync<Series>(ResourceRoutes.EventsUrl.AppendPathSegment(eventId).AppendPathSegment(ResourceRoutes.Series));
+    public async Task<DataContainer<Series>?> GetSeriesByEventAsync(int eventId, SeriesOptionSet options) => await GetResourceAsync<Series>(ResourceRoutes.EventsUrl.AppendPathSegment(eventId).AppendPathSegment(ResourceRoutes.Series).SetQueryParams<SeriesOptionSet>(options));
     public async Task<DataContainer<Series>?> GetSeriesByStoryAsync(int storyId) => await GetResourceAsync<Series>(ResourceRoutes.StoriesUrl.AppendPathSegment(storyId).AppendPathSegment(ResourceRoutes.Series));
+    public async Task<DataContainer<Series>?> GetSeriesByStoryAsync(int storyId, SeriesOptionSet options) => await GetResourceAsync<Series>(ResourceRoutes.StoriesUrl.AppendPathSegment(storyId).AppendPathSegment(ResourceRoutes.Series).SetQueryParams<SeriesOptionSet>(options));
 
     public async Task<DataContainer<Story>?> GetStoryAsync(int storyId) => await GetResourceAsync<Story>(ResourceRoutes.StoriesUrl.AppendPathSegment(storyId));
     public async Task<DataContainer<Story>?> GetStoriesAsync() => await GetResourceAsync<Story>(ResourceRoutes.StoriesUrl);
