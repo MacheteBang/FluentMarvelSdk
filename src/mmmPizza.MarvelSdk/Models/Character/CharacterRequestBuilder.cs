@@ -53,7 +53,6 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     /// Filters the request to return only characters with the exact full name.
     /// </summary>
     /// <param name="name"></param>
-    /// <returns></returns>
     public CharacterRequestBuilder WithName(string name)
     {
         OptionSet.Name = name;
@@ -64,7 +63,6 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     /// Filters the request to return only characters a name that starts with <see cref="nameStartsWith"/>.
     /// </summary>
     /// <param name="nameStartsWith"></param>
-    /// <returns></returns>
     public CharacterRequestBuilder WithNameStartingWith(string nameStartsWith)
     {
         OptionSet.NameStartsWith = nameStartsWith;
@@ -75,7 +73,6 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     /// Limit the returned results.
     /// </summary>
     /// <param name="limit"></param>
-    /// <returns></returns>
     public CharacterRequestBuilder LimitResultsBy(int limit)
     {
         OptionSet.Limit = limit;
@@ -86,7 +83,6 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     /// Skips the specified number of results.
     /// </summary>
     /// <param name="offset"></param>
-    /// <returns></returns>
     public CharacterRequestBuilder OffsetResultsBy(int offset)
     {
         OptionSet.Offset = offset;
@@ -97,7 +93,6 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     /// Filters the request to return only characters modified since <see cref="date"/>.
     /// </summary>
     /// <param name="date"></param>
-    /// <returns></returns>
     public CharacterRequestBuilder ModifiedSince(DateOnly date)
     {
         OptionSet.ModifiedSince = new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(10));

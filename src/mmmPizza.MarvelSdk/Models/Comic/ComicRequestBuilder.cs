@@ -231,7 +231,6 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     /// Limit the returned results.
     /// </summary>
     /// <param name="limit"></param>
-    /// <returns></returns>
     public ComicRequestBuilder LimitResultsBy(int limit)
     {
         OptionSet.Limit = limit;
@@ -242,7 +241,6 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     /// Skips the specified number of results.
     /// </summary>
     /// <param name="offset"></param>
-    /// <returns></returns>
     public ComicRequestBuilder OffsetResultsBy(int offset)
     {
         OptionSet.Offset = offset;
@@ -253,7 +251,6 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     /// Filters the request to return only characters modified since <see cref="date"/>.
     /// </summary>
     /// <param name="date"></param>
-    /// <returns></returns>
     public ComicRequestBuilder ModifiedSince(DateOnly date)
     {
         OptionSet.ModifiedSince = new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(10));
