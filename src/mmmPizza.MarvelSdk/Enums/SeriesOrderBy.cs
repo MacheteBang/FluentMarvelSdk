@@ -13,4 +13,5 @@ public sealed class SeriesOrderBy : SmartEnum<SeriesOrderBy, string>
 
     private SeriesOrderBy(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

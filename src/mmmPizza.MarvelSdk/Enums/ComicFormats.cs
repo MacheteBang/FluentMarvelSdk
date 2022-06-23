@@ -11,5 +11,7 @@ public sealed class ComicFormats : SmartEnum<ComicFormats, string>
     public static readonly ComicFormats DigitalComic = new ComicFormats(nameof(DigitalComic), "digital comic");
     public static readonly ComicFormats InfiniteComic = new ComicFormats(nameof(InfiniteComic), "infinite comic");
 
-    private ComicFormats(string name, string value) : base (name, value) {}
+    private ComicFormats(string name, string value) : base(name, value) { }
+
+    public override string ToString() => Value;
 }

@@ -17,4 +17,5 @@ public sealed class ComicOrderBy : SmartEnum<ComicOrderBy, string>
 
     private ComicOrderBy(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

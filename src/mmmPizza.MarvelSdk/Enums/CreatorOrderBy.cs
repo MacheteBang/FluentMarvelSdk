@@ -17,4 +17,5 @@ public sealed class CreatorOrderBy : SmartEnum<CreatorOrderBy, string>
 
     private CreatorOrderBy(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

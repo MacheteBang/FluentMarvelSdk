@@ -11,4 +11,5 @@ public sealed class CharacterOrderBy : SmartEnum<CharacterOrderBy, string>
 
     private CharacterOrderBy(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

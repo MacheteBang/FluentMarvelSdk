@@ -11,4 +11,5 @@ public sealed class StoryOrderBy : SmartEnum<StoryOrderBy, string>
 
     private StoryOrderBy(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

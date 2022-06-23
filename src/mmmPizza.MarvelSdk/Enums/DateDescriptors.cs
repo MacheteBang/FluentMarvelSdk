@@ -11,4 +11,5 @@ public sealed class DateDescriptors : SmartEnum<DateDescriptors, string>
 
     private DateDescriptors(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

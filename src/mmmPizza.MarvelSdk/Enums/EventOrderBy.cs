@@ -13,4 +13,5 @@ public sealed class EventOrderBy : SmartEnum<CharacterOrderBy, string>
 
     private EventOrderBy(string name, string value) : base(name, value) { }
 
+    public override string ToString() => Value;
 }

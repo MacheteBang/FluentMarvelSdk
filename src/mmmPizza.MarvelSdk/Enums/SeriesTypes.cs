@@ -10,4 +10,6 @@ public sealed class SeriesTypes : SmartEnum<SeriesTypes, string>
     public static readonly SeriesTypes Ongoing = new SeriesTypes(nameof(Ongoing), "ongoing");
 
     private SeriesTypes(string name, string value) : base(name, value) { }
+
+    public override string ToString() => Value;
 }
