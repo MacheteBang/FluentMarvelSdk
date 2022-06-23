@@ -19,6 +19,7 @@ public class ComicOptionSet : OptionSet
     public string? Issn { get; set; }
     public bool? HasDigitalIssue { get; set; }
     public int[]? Creators { get; set; }
+    public int[]? Characters { get; set; }
     public int[]? Series { get; set; }
     public int[]? Events { get; set; }
     public int[]? Stories { get; set; }

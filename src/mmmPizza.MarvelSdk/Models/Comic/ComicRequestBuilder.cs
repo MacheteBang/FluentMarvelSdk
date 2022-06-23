@@ -208,10 +208,20 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     }
 
     /// <summary>
+    /// Filters the request to return only comics which have any of the specified characters in that comic.
+    /// </summary>
+    /// <param name="characterIds"></param>
+    public ComicRequestBuilder WithAnyCharacters(params int[] characterIds)
+    {
+        OptionSet.Characters = characterIds;
+        return this;
+    }
+
+    /// <summary>
     /// Filters the request to return only comics which have all of the specified characters in that comic.
     /// </summary>
     /// <param name="characterIds"></param>
-    public ComicRequestBuilder WithCharacters(params int[] characterIds)
+    public ComicRequestBuilder WithAllCharacters(params int[] characterIds)
     {
         OptionSet.SharedAppearances = characterIds;
         return this;
