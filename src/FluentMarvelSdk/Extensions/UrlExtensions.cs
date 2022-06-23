@@ -25,14 +25,24 @@ internal static class UrlExtensions
         {
             var propertyValue = p.GetValue(options);
 
+            //Guard
             if (propertyValue is null) continue;
 
             if (p.PropertyType.IsArray)
             {
                 string values = "";
-                foreach (var i in (Array)propertyValue) values += i.ToString() + ',';
 
-                url.SetQueryParam(p.Name.ToCamelCase(), values);
+                if (propertyValue is int[])
+                {
+                    values = string.Join(",", ((int[])propertyValue).Select(x => x.ToString()).ToArray());
+                }
+
+                if (propertyValue is DateOnly[])
+                {
+                    values = string.Join(",", ((DateOnly[])propertyValue).Select(x => x.ToString("yyyy-MM-dd")).ToArray());
+                }
+
+                url.SetQueryParam(p.Name.ToCamelCase(), values, true);
                 continue;
             }
 
