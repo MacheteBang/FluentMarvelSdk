@@ -56,17 +56,10 @@ public class MarvelApiService
     public ComicRequestBuilder GetComics() => ComicRequestBuilder.Create(this);
     public ComicRequestBuilder GetComics(int comicId) => ComicRequestBuilder.Create(this);
 
-    // public async Task<DataContainer<Creator>?> GetCreatorAsync(int creatorId) => await GetResourceAsync<Creator>(ResourceRoutes.CreatorsUrl.AppendPathSegment(creatorId));
-    // public async Task<DataContainer<Creator>?> GetCreatorsAsync() => await GetResourceAsync<Creator>(ResourceRoutes.CreatorsUrl);
-    // public async Task<DataContainer<Creator>?> GetCreatorsAsync(CreatorOptionSet options) => await GetResourceAsync<Creator>(ResourceRoutes.CreatorsUrl.SetQueryParams<CreatorOptionSet>(options));
-    // public async Task<DataContainer<Creator>?> GetCreatorsByComicAsync(int comicId) => await GetResourceAsync<Creator>(ResourceRoutes.ComicsUrl.AppendPathSegment(comicId).AppendPathSegment(ResourceRoutes.Creators));
-    // public async Task<DataContainer<Creator>?> GetCreatorsByComicAsync(int comicId, CreatorOptionSet options) => await GetResourceAsync<Creator>(ResourceRoutes.ComicsUrl.AppendPathSegment(comicId).AppendPathSegment(ResourceRoutes.Creators).SetQueryParams<CreatorOptionSet>(options));
-    // public async Task<DataContainer<Creator>?> GetCreatorsByEventAsync(int eventId) => await GetResourceAsync<Creator>(ResourceRoutes.EventsUrl.AppendPathSegment(eventId).AppendPathSegment(ResourceRoutes.Creators));
-    // public async Task<DataContainer<Creator>?> GetCreatorsByEventAsync(int eventId, CreatorOptionSet options) => await GetResourceAsync<Creator>(ResourceRoutes.EventsUrl.AppendPathSegment(eventId).AppendPathSegment(ResourceRoutes.Creators).SetQueryParams<CreatorOptionSet>(options));
-    // public async Task<DataContainer<Creator>?> GetCreatorsBySeriesAsync(int seriesId) => await GetResourceAsync<Creator>(ResourceRoutes.SeriesUrl.AppendPathSegment(seriesId).AppendPathSegment(ResourceRoutes.Creators));
-    // public async Task<DataContainer<Creator>?> GetCreatorsBySeriesAsync(int seriesId, CreatorOptionSet options) => await GetResourceAsync<Creator>(ResourceRoutes.SeriesUrl.AppendPathSegment(seriesId).AppendPathSegment(ResourceRoutes.Creators).SetQueryParams<CreatorOptionSet>(options));
-    // public async Task<DataContainer<Creator>?> GetCreatorsByStoryAsync(int storyId) => await GetResourceAsync<Creator>(ResourceRoutes.StoriesUrl.AppendPathSegment(storyId).AppendPathSegment(ResourceRoutes.Creators));
-    // public async Task<DataContainer<Creator>?> GetCreatorsByStoryAsync(int storyId, CreatorOptionSet options) => await GetResourceAsync<Creator>(ResourceRoutes.StoriesUrl.AppendPathSegment(storyId).AppendPathSegment(ResourceRoutes.Creators).SetQueryParams<CreatorOptionSet>(options));
+    public CreatorRequestBuilder GetCreators() => CreatorRequestBuilder.Create(this);
+    public CreatorRequestBuilder GetCreators(int creatorId) => CreatorRequestBuilder.Create(this, creatorId);
+
+
 
     // public async Task<DataContainer<Event>?> GetEventAsync(int eventId) => await GetResourceAsync<Event>(ResourceRoutes.EventsUrl.AppendPathSegment(eventId));
     // public async Task<DataContainer<Event>?> GetEventsAsync() => await GetResourceAsync<Event>(ResourceRoutes.EventsUrl);
