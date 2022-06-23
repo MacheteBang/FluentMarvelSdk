@@ -208,7 +208,7 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     }
 
     /// <summary>
-    /// Filters the request to return only comics which have any of the specified characters in that comic.
+    /// Filters the request to return only comics which have any of the specified characters.
     /// </summary>
     /// <param name="characterIds"></param>
     public ComicRequestBuilder WithAnyCharacters(params int[] characterIds)
@@ -218,7 +218,7 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     }
 
     /// <summary>
-    /// Filters the request to return only comics which have all of the specified characters in that comic.
+    /// Filters the request to return only comics which have all of the specified characters.
     /// </summary>
     /// <param name="characterIds"></param>
     public ComicRequestBuilder WithAllCharacters(params int[] characterIds)
@@ -228,7 +228,7 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     }
 
     /// <summary>
-    /// Filters the request to return only comics which have all of the specified collaborators that worked on that comic.
+    /// Filters the request to return only comics which have all of the specified collaborators.
     /// </summary>
     /// <param name="collaboratorIds"></param>
     public ComicRequestBuilder WithCollaborators(params int[] collaboratorIds)

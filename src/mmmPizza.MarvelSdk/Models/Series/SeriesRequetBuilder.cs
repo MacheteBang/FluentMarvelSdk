@@ -61,7 +61,7 @@ public class SeriesRequestBuilder : ResourceRequestBuilder<Series, SeriesOptionS
     }
 
     /// <summary>
-    /// Filters the request to return only series created by any of the creators in <see cref="comicIds"/>.
+    /// Filters the request to return only series created by any of the specified creators.
     /// </summary>
     /// <param name="creatorIds"></param>
     public SeriesRequestBuilder ByCreator(params int[] creatorIds)
