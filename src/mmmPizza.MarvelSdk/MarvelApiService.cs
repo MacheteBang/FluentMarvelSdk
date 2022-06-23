@@ -50,11 +50,11 @@ public class MarvelApiService
     }
 
     // Public Methods
-    public CharacterRequestBuilder GetCharacters() => new CharacterRequestBuilder(this);
-    public CharacterRequestBuilder GetCharacters(int characterId) => new CharacterRequestBuilder(this, characterId);
+    public CharacterRequestBuilder GetCharacters() => CharacterRequestBuilder.Create(this);
+    public CharacterRequestBuilder GetCharacters(int characterId) => CharacterRequestBuilder.Create(this, characterId);
 
-    public ComicRequestBuilder GetComics() => new ComicRequestBuilder(this);
-    public ComicRequestBuilder GetComics(int comicId) => new ComicRequestBuilder(this, comicId);
+    public ComicRequestBuilder GetComics() => ComicRequestBuilder.Create(this);
+    public ComicRequestBuilder GetComics(int comicId) => ComicRequestBuilder.Create(this);
 
     // public async Task<DataContainer<Creator>?> GetCreatorAsync(int creatorId) => await GetResourceAsync<Creator>(ResourceRoutes.CreatorsUrl.AppendPathSegment(creatorId));
     // public async Task<DataContainer<Creator>?> GetCreatorsAsync() => await GetResourceAsync<Creator>(ResourceRoutes.CreatorsUrl);

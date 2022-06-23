@@ -2,8 +2,11 @@ namespace mmmPizza.MarvelSdk;
 
 public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
 {
-    public ComicRequestBuilder(MarvelApiService service) : base(service, new()) { }
-    public ComicRequestBuilder(MarvelApiService service, int characterId) : base(service, new(), characterId) { }
+    internal static ComicRequestBuilder Create(MarvelApiService service) => new ComicRequestBuilder(service);
+    internal static ComicRequestBuilder Create(MarvelApiService service, int characterId) => new ComicRequestBuilder(service, characterId);
+
+    private ComicRequestBuilder(MarvelApiService service) : base(service, new()) { }
+    private ComicRequestBuilder(MarvelApiService service, int characterId) : base(service, new(), characterId) { }
 
     /// <summary>
     /// Filters the request to return only comics in the specific issue format.

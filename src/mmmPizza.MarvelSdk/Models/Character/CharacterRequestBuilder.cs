@@ -2,8 +2,12 @@ namespace mmmPizza.MarvelSdk;
 
 public class CharacterRequestBuilder : ResourceRequestBuilder<Character, CharacterOptionSet>
 {
-    public CharacterRequestBuilder(MarvelApiService service) : base(service, new()) { }
-    public CharacterRequestBuilder(MarvelApiService service, int characterId) : base(service, new(), characterId) { }
+
+    internal static CharacterRequestBuilder Create(MarvelApiService service) => new CharacterRequestBuilder(service);
+    internal static CharacterRequestBuilder Create(MarvelApiService service, int characterId) => new CharacterRequestBuilder(service, characterId);
+
+    private CharacterRequestBuilder(MarvelApiService service) : base(service, new()) { }
+    private CharacterRequestBuilder(MarvelApiService service, int characterId) : base(service, new(), characterId) { }
 
     /// <summary>
     /// Filters the request to return only characters which appear in the specified comics.
