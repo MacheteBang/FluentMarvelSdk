@@ -79,10 +79,10 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
     }
 
     /// <summary>
-    /// Filters the request to return only comics whose start year matches <see cref="year"/>.
+    /// Filters the request to return only comics whose series start year matches <see cref="year"/>.
     /// </summary>
     /// <param name="year"></param>
-    public ComicRequestBuilder StartingWithYear(int year)
+    public ComicRequestBuilder StartingWithSeriesYear(int year)
     {
         OptionSet.StartYear = year;
         return this;

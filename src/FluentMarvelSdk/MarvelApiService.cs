@@ -54,7 +54,7 @@ public class MarvelApiService
     public CharacterRequestBuilder GetCharacters(int characterId) => CharacterRequestBuilder.Create(this, characterId);
 
     public ComicRequestBuilder GetComics() => ComicRequestBuilder.Create(this);
-    public ComicRequestBuilder GetComics(int comicId) => ComicRequestBuilder.Create(this);
+    public ComicRequestBuilder GetComics(int comicId) => ComicRequestBuilder.Create(this, comicId);
 
     public CreatorRequestBuilder GetCreators() => CreatorRequestBuilder.Create(this);
     public CreatorRequestBuilder GetCreators(int creatorId) => CreatorRequestBuilder.Create(this, creatorId);
