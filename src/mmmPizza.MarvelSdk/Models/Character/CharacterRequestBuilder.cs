@@ -26,7 +26,7 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     }
 
     /// <summary>
-    /// Filters the request to return only characters which appear in the specified series.
+    /// Filters the request to return only characters which appear in any of the specified series.
     /// </summary>
     /// <param name="seriesIds"></param>
     public CharacterRequestBuilder InSeries(params int[] seriesIds)

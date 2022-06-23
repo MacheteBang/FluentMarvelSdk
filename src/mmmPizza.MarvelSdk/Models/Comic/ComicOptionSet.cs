@@ -6,7 +6,7 @@ public class ComicOptionSet : OptionSet
     public ComicFormatTypes? FormatType { get; set; }
     public bool? NoVariants { get; set; }
     public DateDescriptors? DateDescriptor { get; set; }
-    public int? DateRange { get; set; }
+    public DateOnly[]? DateRange { get; set; }
     public string? Title { get; set; }
     public string? TitleStartsWith { get; set; }
     public int? StartYear { get; set; }
