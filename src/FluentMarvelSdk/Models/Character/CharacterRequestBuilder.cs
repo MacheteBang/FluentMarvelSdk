@@ -75,6 +75,10 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
     /// <param name="limit"></param>
     public CharacterRequestBuilder LimitResultsBy(int limit)
     {
+        // Try to block uneeded calls to the API by validating this parameter locally. At the mercy of the API changing, but...
+        if (limit < Constants.LimitLowerBound) throw new InvalidLimitException(new ApiError() { Message = $"Limit must be above {Constants.LimitLowerBound}" });
+        if (limit > Constants.LimitUpperBound) throw new InvalidLimitException(new ApiError() { Message = $"Limit must be less than or equal to {Constants.LimitUpperBound}" });
+
         OptionSet.Limit = limit;
         return this;
     }
