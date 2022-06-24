@@ -17,6 +17,8 @@ public static class IFlurlResponseExtensions
             case 401:
                 if (error.Code == "InvalidCredentials") throw new InvalidHashException(error);
                 break;
+            case 404:
+                throw new ResourceNotFoundException();
             case 409:
                 if (error.Status.Contains("cannot be blank if it is set")) throw new EmptyParameterException(error);
                 if (error.Status.Contains("We don't recognize the parameter")) throw new InvalidParameterException(error);
