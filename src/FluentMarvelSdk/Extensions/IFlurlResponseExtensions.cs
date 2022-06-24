@@ -15,7 +15,7 @@ public static class IFlurlResponseExtensions
         switch (response.StatusCode)
         {
             case 401:
-                if (error.Code == "InvalidCredentials") throw new InvalidLimitException(error);
+                if (error.Code == "InvalidCredentials") throw new InvalidHashException(error);
                 break;
             case 409:
                 if (error.Status.Contains("cannot be blank if it is set")) throw new EmptyParameterException(error);
