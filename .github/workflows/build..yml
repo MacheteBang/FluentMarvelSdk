@@ -19,6 +19,6 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore .\src\FluentMarvelSdk\
+      run: dotnet restore ./src/FluentMarvelSdk/
     - name: Build
       run: dotnet build --no-restore
