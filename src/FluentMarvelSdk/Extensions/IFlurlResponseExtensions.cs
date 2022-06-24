@@ -18,7 +18,8 @@ public static class IFlurlResponseExtensions
                 if (error.Code == "InvalidCredentials") throw new InvalidLimitException(error);
                 break;
             case 409:
-                if (error.Status.Contains("may not request more than 100")) throw new InvalidLimitException(error);
+                if (error.Status.Contains("may not request more than")) throw new InvalidLimitException(error);
+                if (error.Status.Contains("limit greater than")) throw new InvalidLimitException(error);
                 if (error.Code == "MissingParameter" && error.Message.Contains("user key")) throw new MissingApiKeyException(error);
                 if (error.Code == "MissingParameter" && error.Message.Contains("hash")) throw new MissingHashException(error);
                 if (error.Code == "MissingParameter" && error.Message.Contains("timestamp")) throw new MissingTimestampException(error);
