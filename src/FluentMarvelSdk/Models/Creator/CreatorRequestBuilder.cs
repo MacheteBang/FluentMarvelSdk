@@ -128,38 +128,4 @@ public class CreatorRequestBuilder : ResourceRequestBuilder<Creator, CreatorOpti
         OptionSet.Stories = storyIds;
         return this;
     }
-
-    /// <summary>
-    /// Limit the returned results.
-    /// </summary>
-    /// <param name="limit"></param>
-    public CreatorRequestBuilder LimitResultsBy(int limit)
-    {
-        // Try to block uneeded calls to the API by validating this parameter locally. At the mercy of the API changing, but...
-        if (limit < Constants.LimitLowerBound) throw new InvalidLimitException(new ApiError() { Message = $"Limit must be above {Constants.LimitLowerBound}" });
-        if (limit > Constants.LimitUpperBound) throw new InvalidLimitException(new ApiError() { Message = $"Limit must be less than or equal to {Constants.LimitUpperBound}" });
-
-        OptionSet.Limit = limit;
-        return this;
-    }
-
-    /// <summary>
-    /// Skips the specified number of results.
-    /// </summary>
-    /// <param name="offset"></param>
-    public CreatorRequestBuilder OffsetResultsBy(int offset)
-    {
-        OptionSet.Offset = offset;
-        return this;
-    }
-
-    /// <summary>
-    /// Filters the request to return only creators modified since <see cref="date"/>.
-    /// </summary>
-    /// <param name="date"></param>
-    public CreatorRequestBuilder ModifiedSince(DateOnly date)
-    {
-        OptionSet.ModifiedSince = new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(10));
-        return this;
-    }
 }

@@ -16,7 +16,7 @@ var serializerOptions = new JsonSerializerOptions()
 var api = new MarvelApiService(_configuration["Marvel:PrivateKey"], _configuration["Marvel:PublicKey"]);
 
 var characters = await api.GetCharacters()
-    .LimitResultsBy(1000)
+    .LimitResultsBy(10)
     .Excelsior();
 
 
