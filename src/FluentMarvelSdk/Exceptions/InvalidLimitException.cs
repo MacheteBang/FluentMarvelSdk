@@ -7,6 +7,6 @@ public class InvalidLimitException : Exception
         ApiError = error;
     }
     
-    public readonly string Reason = "Occurs when a limit is less than 0 or greater than 100.";
+    public readonly string Reason = "Occurs when a limit is out of bounds.";
     public ApiError? ApiError { get; init; }
 }
