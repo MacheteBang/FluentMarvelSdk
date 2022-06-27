@@ -21,12 +21,9 @@ internal static class UrlExtensions
     {
         if (options is null) return url;
 
-        foreach (PropertyInfo p in options.GetType().GetProperties())
+        foreach (PropertyInfo p in options.GetType().GetProperties().Where(p => p.GetValue(options) is not null))
         {
             var propertyValue = p.GetValue(options);
-
-            //Guard
-            if (propertyValue is null) continue;
 
             if (p.PropertyType.IsArray)
             {
