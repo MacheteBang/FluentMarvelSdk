@@ -7,7 +7,7 @@ public class Comic
     public string? Title { get; set; }
     public double? IssueNumber { get; set; }
     public string? VariantDescription { get; set; }
-    public string ?Description { get; set; }
+    public string? Description { get; set; }
     public DateTimeOffset Modified { get; set; }
     public string? Isbn { get; set; }
     public string? Upc { get; set; }

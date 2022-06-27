@@ -1,10 +1,5 @@
 namespace FluentMarvelSdk;
 
-public interface IResourceRequestBuilder<TResource>
-{
-    Task<DataContainer<TResource>?> Excelsior();
-}
-
 public class ResourceRequestBuilder<T, TOptionSet> : IResourceRequestBuilder<T> where TOptionSet : OptionSet
 {
     public TOptionSet OptionSet { get; set; }
