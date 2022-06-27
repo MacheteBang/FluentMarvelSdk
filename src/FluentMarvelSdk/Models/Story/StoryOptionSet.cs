@@ -7,5 +7,5 @@ public class StoryOptionSet :OptionSet
     public int[]? Events { get; set; }
     public int[]? Creators { get; set; }
     public int[]? Characters { get; set; }
-    public SeriesOrderBy? OrderBy { get; set; }
+    public StoryOrderBy[]? OrderBy { get; set; }
 }
