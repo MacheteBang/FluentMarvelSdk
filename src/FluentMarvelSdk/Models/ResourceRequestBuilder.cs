@@ -1,8 +1,13 @@
 namespace FluentMarvelSdk;
 
-public abstract class ResourceRequestBuilder<T, TOptionSet> where TOptionSet : OptionSet
+public interface IResourceRequestBuilder<TResource>
 {
-    public TOptionSet OptionSet { get; init; }
+    Task<DataContainer<TResource>?> Excelsior();
+}
+
+public class ResourceRequestBuilder<T, TOptionSet> : IResourceRequestBuilder<T> where TOptionSet : OptionSet
+{
+    public TOptionSet OptionSet { get; set; }
     protected MarvelApiService _service;
     protected int _resourceId;
 
@@ -20,11 +25,36 @@ public abstract class ResourceRequestBuilder<T, TOptionSet> where TOptionSet : O
 
     public async Task<DataContainer<T>?> Excelsior()
     {
-        Flurl.Url url = ResourceRoutes.GetRoute<T>();
-        if (_resourceId != 0) url.AppendPathSegment(_resourceId);
-        url.SetQueryParams<TOptionSet>(OptionSet);
+        Flurl.Url originalUrl = ResourceRoutes.GetRoute<T>();
+        if (_resourceId != 0) originalUrl.AppendPathSegment(_resourceId);
 
-        return await _service.GetResourceAsync<T>(url);
+        // Execute the initiating request.
+        var url = originalUrl.Clone();
+        url.SetQueryParams<TOptionSet>(OptionSet);
+        var result = await _service.GetResourceAsync<T>(url);
+
+        // Guard
+        if (result is null) return null;
+
+        // Update the properties for the "Previous" set
+        if (result.Offset != 0)
+        {
+            var previousOptionSet = OptionSet.CreateDeepCopy<TOptionSet>();
+            previousOptionSet.Offset = result.Limit > result.Offset ? 0 : result.Offset - result.Limit;
+            var previousBuilder = new ResourceRequestBuilder<T, TOptionSet>(this._service, previousOptionSet);
+            previousBuilder.OptionSet = previousOptionSet;
+            result.SetPreviousBuilder(previousBuilder);
+        }
+
+        if (result.Count + result.Limit < result.Total)
+        {
+            var nextOptionSet = OptionSet.CreateDeepCopy<TOptionSet>();
+            nextOptionSet.Offset = result.Count + result.Limit > result.Total ? result.Total - result.Count : result.Offset + result.Limit;
+            var nextBuilder = new ResourceRequestBuilder<T, TOptionSet>(this._service, nextOptionSet);
+            result.SetNextBuilder(nextBuilder);
+        }
+
+        return result;
     }
 
     /// <summary>
