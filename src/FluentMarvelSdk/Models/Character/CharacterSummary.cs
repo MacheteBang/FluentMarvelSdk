@@ -1,8 +1,6 @@
 namespace FluentMarvelSdk;
 
-public class CharacterSummary
+public class CharacterSummary : ResourceSummary<Character>
 {
-    public string? ResourceUri { get; set; }
-    public string? Name { get; set; }
     public string? Role { get; set; }
 }
