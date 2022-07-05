@@ -17,6 +17,7 @@ var api = new MarvelApiService(_configuration["Marvel:PrivateKey"], _configurati
 
 var characters = await api.GetCharacters()
     .LimitResultsBy(10)
+    .OrderBy(new[] { CharacterOrderBy.NameAsc })
     .Excelsior();
 
 

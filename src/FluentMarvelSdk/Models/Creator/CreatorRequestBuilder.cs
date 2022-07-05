@@ -128,4 +128,10 @@ public class CreatorRequestBuilder : ResourceRequestBuilder<Creator, CreatorOpti
         OptionSet.Stories = storyIds;
         return this;
     }
+
+    public CreatorRequestBuilder OrderBy(params CreatorOrderBy[] ordering)
+    {
+        OptionSet.OrderBy = ordering;
+        return this;
+    }
 }

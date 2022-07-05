@@ -9,5 +9,5 @@ public class EventOptionSet : OptionSet
     public int[]? Series { get; set; }
     public int[]? Comics { get; set; }
     public int[]? Stories { get; set; }
-    public EventOrderBy? OrderBy { get; set; }
+    public new EventOrderBy[]? OrderBy { get; set; }
 }

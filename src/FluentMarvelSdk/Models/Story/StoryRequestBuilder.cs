@@ -57,4 +57,10 @@ public class StoryRequestBuilder : ResourceRequestBuilder<Story, StoryOptionSet>
         OptionSet.Characters = characterIds;
         return this;
     }
+
+    public StoryRequestBuilder OrderBy(params StoryOrderBy[] ordering)
+    {
+        OptionSet.OrderBy = ordering;
+        return this;
+    }
 }

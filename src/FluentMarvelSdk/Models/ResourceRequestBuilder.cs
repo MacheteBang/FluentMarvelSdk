@@ -56,7 +56,7 @@ public class ResourceRequestBuilder<T, TOptionSet> : IResourceRequestBuilder<T> 
     /// Limit the returned results.
     /// </summary>
     /// <param name="limit"></param>
-    public  ResourceRequestBuilder<T, TOptionSet> LimitResultsBy(int limit)
+    public ResourceRequestBuilder<T, TOptionSet> LimitResultsBy(int limit)
     {
         // Try to block uneeded calls to the API by validating this parameter locally. At the mercy of the API changing, but...
         if (limit < Constants.LimitLowerBound) throw new InvalidLimitException(new ApiError() { Message = $"Limit must be above {Constants.LimitLowerBound}" });
@@ -70,7 +70,7 @@ public class ResourceRequestBuilder<T, TOptionSet> : IResourceRequestBuilder<T> 
     /// Skips the specified number of results.
     /// </summary>
     /// <param name="offset"></param>
-    public  ResourceRequestBuilder<T, TOptionSet> OffsetResultsBy(int offset)
+    public ResourceRequestBuilder<T, TOptionSet> OffsetResultsBy(int offset)
     {
         OptionSet.Offset = offset;
         return this;
@@ -83,6 +83,12 @@ public class ResourceRequestBuilder<T, TOptionSet> : IResourceRequestBuilder<T> 
     public ResourceRequestBuilder<T, TOptionSet> ModifiedSince(DateOnly date)
     {
         OptionSet.ModifiedSince = new(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.FromHours(10));
+        return this;
+    }
+
+    public ResourceRequestBuilder<T, TOptionSet> OrderBy(IResourceOrderBy[] ordering)
+    {
+        OptionSet.OrderBy = ordering;
         return this;
     }
 }
