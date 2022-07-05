@@ -14,5 +14,5 @@ public class CreatorOptionSet : OptionSet
     public int[]? Series { get; set; }
     public int[]? Events { get; set; }
     public int[]? Stories { get; set; }
-    public CreatorOrderBy? OrderBy { get; set; }
+    public new  CreatorOrderBy[]? OrderBy { get; set; }
 }

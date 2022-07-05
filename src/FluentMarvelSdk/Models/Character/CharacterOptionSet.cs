@@ -8,5 +8,5 @@ public class CharacterOptionSet : OptionSet
     public int[]? Series { get; set; }
     public int[]? Events { get; set; }
     public int[]? Stories { get; set; }
-    public CharacterOrderBy? OrderBy { get; set; }
+    public new CharacterOrderBy[]? OrderBy { get; set; }
 }

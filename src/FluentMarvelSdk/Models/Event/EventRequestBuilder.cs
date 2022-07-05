@@ -78,4 +78,10 @@ public class EventRequestBuilder : ResourceRequestBuilder<Event, EventOptionSet>
         OptionSet.Stories = storyIds;
         return this;
     }
+
+    public EventRequestBuilder OrderBy(params EventOrderBy[] ordering)
+    {
+        OptionSet.OrderBy = ordering;
+        return this;
+    }
 }

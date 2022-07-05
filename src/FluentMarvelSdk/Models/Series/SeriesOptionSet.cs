@@ -12,5 +12,5 @@ public class SeriesOptionSet : OptionSet
     public int[]? Characters { get; set; }
     public SeriesTypes? SeriesType { get; set; }
     public ComicFormats? Contains { get; set; }
-    public SeriesOrderBy? OrderBy { get; set; }
+    public new SeriesOrderBy[]? OrderBy { get; set; }
 }

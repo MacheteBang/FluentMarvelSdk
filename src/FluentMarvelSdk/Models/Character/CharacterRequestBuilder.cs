@@ -68,4 +68,10 @@ public class CharacterRequestBuilder : ResourceRequestBuilder<Character, Charact
         OptionSet.NameStartsWith = nameStartsWith;
         return this;
     }
+
+    public CharacterRequestBuilder OrderBy(params CharacterOrderBy[] ordering)
+    {
+        OptionSet.OrderBy = ordering;
+        return this;
+    }
 }

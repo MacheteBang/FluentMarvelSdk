@@ -25,5 +25,5 @@ public class ComicOptionSet : OptionSet
     public int[]? Stories { get; set; }
     public int[]? SharedAppearances { get; set; }
     public int[]? Collaborators { get; set; }
-    public ComicOrderBy? OrderBy { get; set; }
+    public new ComicOrderBy[]? OrderBy { get; set; }
 }

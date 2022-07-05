@@ -236,4 +236,10 @@ public class ComicRequestBuilder : ResourceRequestBuilder<Comic, ComicOptionSet>
         OptionSet.Collaborators = collaboratorIds;
         return this;
     }
+
+    public ComicRequestBuilder OrderBy(params ComicOrderBy[] ordering)
+    {
+        OptionSet.OrderBy = ordering;
+        return this;
+    }
 }
